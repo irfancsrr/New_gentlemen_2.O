@@ -52,5 +52,8 @@ export const notificationService = {
 };
 
 export const adminService = {
-  getDashboardStats: () => api.get("/admin/stats").then((res) => res.data),
+  getDashboardStats: () => api.get("/admin/stats").then((res) => {
+    console.log(res?.data);
+  return res.data
+}),
 };

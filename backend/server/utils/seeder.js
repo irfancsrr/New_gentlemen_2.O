@@ -22,8 +22,8 @@ const seed = async () => {
   console.log("Creating admin user...");
   await User.create({
     name: "NovaCart Admin",
-    email: "admin@novacart.com",
-    password: "Admin@12345",
+    email: "adminirfan@gmail.com",
+    password: "Admin@1234",
     role: "admin",
     isEmailVerified: true,
   });
@@ -133,7 +133,7 @@ const seed = async () => {
   await Product.insertMany(products);
 
   console.log("Seeding complete!");
-  console.log("Admin login -> email: admin@novacart.com | password: Admin@12345");
+  console.log("Admin login -> email: adminirfan@gmail.com | password: Admin@1234");
   process.exit(0);
 };
 

@@ -43,9 +43,14 @@ const AdminAnalyticsPage = () => {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    adminService.getDashboardStats().then((res) => setStats(res.data));
-  }, []);
+    (async()=>{
+      const res= await adminService.getDashboardStats();
+      console.log('res analytic: ',res);
+      setStats(res)
 
+    })();
+  }, []);
+// console.log(stats) // testing
   if (!stats) {
     return (
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

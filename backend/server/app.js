@@ -19,6 +19,10 @@ const addressRoutes = require("./routes/addressRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const userRoutes = require("./routes/userRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
+const adminAnalyticsRoutes = require("./routes/adminAnalyticsRoute");
+
+const emailRoutes = require("./routes/emailSenderRoute");
+
 
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
@@ -58,6 +62,7 @@ app.get("/api/health", (req, res) => {
   res.status(200).json({ success: true, message: "NovaCart API is healthy", timestamp: new Date() });
 });
 
+app.use("/api/admin", adminAnalyticsRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/categories", categoryRoutes);
@@ -71,6 +76,7 @@ app.use("/api/addresses", addressRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/email", emailRoutes); // email sending route...
 
 app.use(notFound);
 app.use(errorHandler);

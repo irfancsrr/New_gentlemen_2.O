@@ -213,13 +213,46 @@ const cancelOrder = asyncHandler(async (req, res) => {
     throw ApiError.badRequest("This order can no longer be cancelled");
   }
 
-  order.orderStatus = "cancelled";
+  // Refund if Stripe payment was made
+  if (order.paymentMethod === "stripe" && order.isPaid) {
+    try {
+      await stripe.refunds.create({
+        payment_intent: order.paymentResult.id,
+      });
+      order.orderStatus = "refunded";
+      order.statusHistory.push({ status: "refunded", note: "Refund issued via Stripe" });
+    } catch (err) {
+      throw ApiError.internal("Refund failed: " + err.message);
+    }
+  } else {
+    order.orderStatus = "cancelled";
+    order.statusHistory.push({ status: "cancelled", note: req.body.reason || "Cancelled by customer" });
+  }
+
   order.cancelReason = req.body.reason || "Cancelled by customer";
-  order.statusHistory.push({ status: "cancelled", note: order.cancelReason });
   await order.save();
 
   return sendSuccess(res, 200, "Order cancelled successfully", order);
 });
+
+// const cancelOrder = asyncHandler(async (req, res) => {
+//   const order = await Order.findById(req.params.id);
+
+//   if (!order) throw ApiError.notFound("Order not found");
+//   if (order.user.toString() !== req.user._id.toString()) {
+//     throw ApiError.forbidden("You do not have access to this order");
+//   }
+//   if (!["pending", "processing"].includes(order.orderStatus)) {
+//     throw ApiError.badRequest("This order can no longer be cancelled");
+//   }
+
+//   order.orderStatus = "cancelled";
+//   order.cancelReason = req.body.reason || "Cancelled by customer";
+//   order.statusHistory.push({ status: "cancelled", note: order.cancelReason });
+//   await order.save();
+
+//   return sendSuccess(res, 200, "Order cancelled successfully", order);
+// });
 
 // @desc    Get all orders (admin)
 // @route   GET /api/orders
