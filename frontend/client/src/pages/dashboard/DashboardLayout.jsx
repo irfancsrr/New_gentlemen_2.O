@@ -1,14 +1,15 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Package, Heart, User, MapPin, LogOut } from "lucide-react";
+import { ClipboardList, HeartHandshake, UserCircle2, MapPinned, LogOut } from "lucide-react";
 import { logoutUser } from "../../features/auth/authSlice";
 
 const navItems = [
-  { label: "Orders", to: "/dashboard/orders", icon: Package },
-  { label: "Wishlist", to: "/dashboard/wishlist", icon: Heart },
-  { label: "Profile", to: "/dashboard/profile", icon: User },
-  { label: "Addresses", to: "/dashboard/addresses", icon: MapPin },
+  { label: "Orders", to: "/dashboard/orders", icon: ClipboardList },
+  { label: "Wishlist", to: "/dashboard/wishlist", icon: HeartHandshake },
+  { label: "Profile", to: "/dashboard/profile", icon: UserCircle2 },
+  { label: "Addresses", to: "/dashboard/addresses", icon: MapPinned },
 ];
+
 
 const DashboardLayout = () => {
   const dispatch = useDispatch();

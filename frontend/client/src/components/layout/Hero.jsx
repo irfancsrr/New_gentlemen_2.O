@@ -16,16 +16,15 @@ const Hero = () => {
         >
           <span className="eyebrow">Spring / Summer Collection</span>
           <h1 className="font-display text-5xl leading-[1.05] tracking-tightest text-ink dark:text-cream sm:text-6xl lg:text-7xl">
-            Dressed for
+           Styled for
             <br />
-            <span className="italic text-gold">the life you</span>
+            <span className="italic text-gold">the world you</span>
             <br />
-            actually live.
+            truly live in.
           </h1>
           <p className="max-w-md text-base leading-relaxed text-stone">
-            Considered essentials — cut from honest materials, priced without the markup games. NovaCart
-            exists so getting dressed well doesn't require a compromise.
-          </p>
+            Considered essentials — crafted from honest fabrics, designed with timeless elegance, and priced without the markup games. 
+            <strong>NEW GENTLEMEN</strong> exists so dressing well feels effortless, refined, and uncompromised.          </p>
           <div className="mt-2 flex flex-wrap items-center gap-4">
             <Link to="/shop" className="btn-primary">
               Shop the Collection <ArrowRight size={16} />
@@ -43,7 +42,7 @@ const Hero = () => {
           className="relative aspect-[4/5] w-full overflow-hidden rounded-xl2 bg-ink/5"
         >
           <img
-            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80"
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800"
             alt="NovaCart seasonal editorial"
             className="h-full w-full object-cover"
           />

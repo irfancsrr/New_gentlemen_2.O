@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Search, Heart, ShoppingBag, User, Menu, X, Sun, Moon } from "lucide-react";
+// import { Search, Heart, ShoppingBag, User, Menu, X, Sun, Moon } from "lucide-react";
+import { SearchCheck, HeartHandshake, ShoppingBasket, UserCircle2, MenuSquare, XCircle, SunMedium, MoonStar } from "lucide-react";
 import { toggleMobileMenu, closeMobileMenu, toggleTheme } from "../../features/ui/uiSlice";
 import { openMiniCart } from "../../features/cart/cartSlice";
 
 const navLinks = [
-  { label: "New Arrivals", to: "/shop?sort=newest" },
-  { label: "Men", to: "/shop?category=men" },
-  { label: "Women", to: "/shop?category=women" },
-  { label: "Footwear", to: "/shop?category=footwear" },
-  { label: "Accessories", to: "/shop?category=accessories" },
+  { label: "New Collection", to: "/shop?sort=newest" },
+  { label: "GENTLEMEN", to: "/shop?category=men" },
+  { label: "LADDIES", to: "/shop?category=women" },
+  { label: "FOOTWEAR", to: "/shop?category=footwear" },
+  { label: "ACCESSORIES", to: "/shop?category=accessories" },
 ];
 
 const Navbar = () => {
@@ -57,11 +58,11 @@ const Navbar = () => {
           className="flex items-center justify-center rounded-full p-2 lg:hidden"
           aria-label="Open menu"
         >
-          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          {isMobileMenuOpen ? <XCircle size={22} /> : <MenuSquare size={22} />}
         </button>
 
         <Link to="/" className="font-display text-2xl tracking-tightest text-ink dark:text-cream">
-          NovaCart
+          NEW GENTLEMEN
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
@@ -82,23 +83,16 @@ const Navbar = () => {
             className="rounded-full p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10"
             aria-label="Search"
           >
-            <Search size={19} />
+            <SearchCheck size={19} />
           </button>
 
-          <button
-            onClick={() => dispatch(toggleTheme())}
-            className="hidden rounded-full p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10 sm:flex"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun size={19} /> : <Moon size={19} />}
-          </button>
 
           <Link
             to={isAuthenticated ? "/dashboard/wishlist" : "/login"}
             className="hidden rounded-full p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10 sm:flex"
             aria-label="Wishlist"
           >
-            <Heart size={19} />
+            <HeartHandshake size={19} />
           </Link>
 
           <Link
@@ -106,7 +100,7 @@ const Navbar = () => {
             className="rounded-full p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10"
             aria-label="Account"
           >
-            <User size={19} />
+            <UserCircle2 size={19} />
           </Link>
 
           <button
@@ -114,12 +108,19 @@ const Navbar = () => {
             className="relative rounded-full p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10"
             aria-label="Cart"
           >
-            <ShoppingBag size={19} />
+            <ShoppingBasket size={19} />
             {totalItems > 0 && (
               <span className="absolute right-0 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[10px] font-bold text-ink">
                 {totalItems > 9 ? "9+" : totalItems}
               </span>
             )}
+          </button>
+          <button
+            onClick={() => dispatch(toggleTheme())}
+            className="hidden rounded-full p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10 sm:flex"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <SunMedium size={19} /> : <MoonStar size={19} />}
           </button>
         </div>
       </div>
@@ -127,7 +128,7 @@ const Navbar = () => {
       {searchOpen && (
         <div className="border-t border-hairline bg-ivory dark:border-hairline-dark dark:bg-charcoal">
           <form onSubmit={handleSearchSubmit} className="container-page flex items-center gap-3 py-4">
-            <Search size={18} className="text-stone" />
+            <SearchCheck size={18} className="text-stone" />
             <input
               autoFocus
               value={searchTerm}

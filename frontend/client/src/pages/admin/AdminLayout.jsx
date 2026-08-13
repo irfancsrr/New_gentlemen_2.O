@@ -1,12 +1,12 @@
 import { NavLink, Outlet, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { LayoutDashboard, Package, ShoppingCart, LogOut, ArrowLeft } from "lucide-react";
+import { BarChart3, Boxes, ClipboardList, LogOut, ArrowLeftCircle } from "lucide-react";
 import { logoutUser } from "../../features/auth/authSlice";
 
 const navItems = [
-  { label: "Analytics", to: "/admin", icon: LayoutDashboard, end: true },
-  { label: "Products", to: "/admin/products", icon: Package },
-  { label: "Orders", to: "/admin/orders", icon: ShoppingCart },
+  { label: "Analytics", to: "/admin", icon: BarChart3, end: true },
+  { label: "Products", to: "/admin/products", icon: Boxes },
+  { label: "Orders", to: "/admin/orders", icon: ClipboardList },
 ];
 
 const AdminLayout = () => {
@@ -16,9 +16,9 @@ const AdminLayout = () => {
     <div className="flex min-h-screen bg-cream/30 dark:bg-charcoal">
       <aside className="hidden w-64 shrink-0 flex-col border-r border-hairline bg-ivory p-6 dark:border-hairline-dark dark:bg-charcoal lg:flex">
         <Link to="/" className="font-display text-2xl tracking-tightest">
-          NovaCart
+          NEW GENTLEMEN
         </Link>
-        <span className="mt-1 text-xs text-stone">Admin Console</span>
+        <span className="mt-1 text-xs text-stone">Admin Panel</span>
 
         <nav className="mt-10 flex flex-col gap-1">
           {navItems.map((item) => (
@@ -45,7 +45,7 @@ const AdminLayout = () => {
             to="/"
             className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-ink/70 hover:bg-ink/5 dark:text-cream/70 dark:hover:bg-cream/10"
           >
-            <ArrowLeft size={16} />
+            <ArrowLeftCircle size={16} />
             Back to Store
           </Link>
           <button
