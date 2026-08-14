@@ -97,7 +97,7 @@ const Navbar = () => {
 
           <Link
             to={isAuthenticated ? (user?.role === "admin" ? "/admin" : "/dashboard") : "/login"}
-            className="rounded-full p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10"
+            className="hidden rounded-full p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10 sm:flex"
             aria-label="Account"
           >
             <UserCircle2 size={19} />
@@ -153,6 +153,23 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            <Link
+            to={isAuthenticated ? "/dashboard/wishlist" : "/login"}
+            onClick={() => dispatch(closeMobileMenu())}
+            className=" rounded-full flex flex-1 items-center gap-2 p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10 sm:flex"
+            aria-label="Wishlist"
+          >
+            <HeartHandshake size={19} /> <span className="text-base font-medium text-ink transition-colors hover:bg-ink/5 dark:text-cream dark:hover:bg-cream/10">Wishlist</span>
+          </Link>
+
+          <Link
+            to={isAuthenticated ? (user?.role === "admin" ? "/admin" : "/dashboard") : "/login"}
+            onClick={() => dispatch(closeMobileMenu())}
+            className="rounded-full flex flex-1 items-center gap-2 p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10"
+            aria-label="Account"
+          >
+            <UserCircle2 size={19} /> <span className="text-base font-medium text-ink transition-colors hover:bg-ink/5 dark:text-cream dark:hover:bg-cream/10">{user?.role === "Admin" ? "admin" : "Dashboard"}</span> 
+          </Link>
           </nav>
         </div>
       )}

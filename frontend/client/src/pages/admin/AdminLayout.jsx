@@ -13,14 +13,14 @@ const AdminLayout = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex min-h-screen bg-cream/30 dark:bg-charcoal">
-      <aside className="hidden w-64 shrink-0 flex-col border-r border-hairline bg-ivory p-6 dark:border-hairline-dark dark:bg-charcoal lg:flex">
+    <div className="flex flex-col lg:flex-row  min-h-screen bg-cream/30 dark:bg-charcoal">
+      <aside className=" w-full lg:w-64 shrink-0 flex-col border-r border-hairline bg-ivory p-6 dark:border-hairline-dark dark:bg-charcoal lg:flex">
         <Link to="/" className="font-display text-2xl tracking-tightest">
           NEW GENTLEMEN
         </Link>
         <span className="mt-1 text-xs text-stone">Admin Panel</span>
 
-        <nav className="mt-10 flex flex-col gap-1">
+        <nav className="mt-10 flex lg:flex-col lg:gap-1  flex-row gap-2">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -43,7 +43,7 @@ const AdminLayout = () => {
         <div className="mt-auto flex flex-col gap-1">
           <Link
             to="/"
-            className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-ink/70 hover:bg-ink/5 dark:text-cream/70 dark:hover:bg-cream/10"
+            className="flex items-center gap-3  rounded-lg px-4 py-6 text-sm font-medium text-ink/70 hover:bg-ink/5 dark:text-cream/70 dark:hover:bg-cream/10"
           >
             <ArrowLeftCircle size={16} />
             Back to Store
