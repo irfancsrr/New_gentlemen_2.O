@@ -20,7 +20,7 @@ const AdminLayout = () => {
         </Link>
         <span className="mt-1 text-xs text-stone">Admin Panel</span>
 
-        <nav className="mt-10 flex lg:flex-col lg:gap-1  flex-row gap-2">
+        <nav className="mt-10 flex lg:flex-col lg:gap-1 overflow-x-auto  lg:overflow-visible  flex-row gap-2">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
