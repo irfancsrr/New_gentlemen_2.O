@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { Search, Heart, ShoppingBag, User, Menu, X, Sun, Moon } from "lucide-react";
-import { SearchCheck, HeartHandshake, ShoppingBasket, UserCircle2, MenuSquare, XCircle, SunMedium, MoonStar } from "lucide-react";
+import { SearchCheck, HeartHandshake, ShoppingBasket, UserCircle2, Menu, XCircle, SunMedium, MoonStar } from "lucide-react";
 import { toggleMobileMenu, closeMobileMenu, toggleTheme } from "../../features/ui/uiSlice";
 import { openMiniCart } from "../../features/cart/cartSlice";
 
@@ -58,7 +58,7 @@ const Navbar = () => {
           className="flex items-center justify-center rounded-full p-2 lg:hidden"
           aria-label="Open menu"
         >
-          {isMobileMenuOpen ? <XCircle size={22} /> : <MenuSquare size={22} />}
+          {isMobileMenuOpen ? <XCircle size={22} /> : <Menu size={22} />}
         </button>
 
         <Link to="/" className="font-display text-2xl tracking-tightest text-ink dark:text-cream">
@@ -117,7 +117,7 @@ const Navbar = () => {
           </button>
           <button
             onClick={() => dispatch(toggleTheme())}
-            className="hidden rounded-full p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10 sm:flex"
+            className=" rounded-full p-2.5 text-ink/80 transition-colors hover:bg-ink/5 dark:text-cream/80 dark:hover:bg-cream/10 sm:flex"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <SunMedium size={19} /> : <MoonStar size={19} />}
