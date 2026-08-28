@@ -1,0 +1,29 @@
+version: "3.0"
+
+services:
+  client:
+    build: ./frontend/client
+    image: irfanking0111/new_gentlemen_frontend:latest
+     
+    ports:
+      - 5173:5173
+
+    depends_on:
+      - server
+    restart: unless-stopped
+
+    networks:
+      - fullStack-net
+
+  server:
+    build: ./backend/server
+    image: irfanking0111/new_gentlemen_backend:latest
+    ports:
+      - 5000:5000
+    restart: unless-stopped
+    networks:
+      - fullStack-net
+
+networks:
+  fullStack-net:
+    driver: bridge
